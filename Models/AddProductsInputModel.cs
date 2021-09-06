@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ReviewProdutosEcommerce.API.Models
 {
-    public class AddProductsInputModel
+    public class AddProductInputModel
     {
         public string Title { get; set; }
         public string Description { get; set; }

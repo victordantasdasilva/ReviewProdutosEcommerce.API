@@ -28,6 +28,10 @@ namespace ReviewProdutosEcommerce.API.Models
 
     public class ProductReviewViewModel
     {
+        public ProductReviewViewModel()
+        {
+
+        }
         public ProductReviewViewModel(int id, string author, int rating, string comments, DateTime resgisteredAt)
         {
             Id = id;

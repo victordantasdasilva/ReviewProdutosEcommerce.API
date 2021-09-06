@@ -6,12 +6,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using ReviewProdutosEcommerce.API.Persistence;
+using ReviewProdutosEcommerce.API.Persistence.Repositories;
 using ReviewProdutosEcommerce.API.Profiles;
 
 namespace ReviewProdutosEcommerce.API
@@ -28,7 +30,13 @@ namespace ReviewProdutosEcommerce.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<ReviewsProdutosDbContect>();
+            var connectionString = Configuration.GetValue<string>("ReviewProdutosCn");
+
+            //services.AddSingleton<ReviewsProdutosDbContect>();
+
+            services.AddDbContext<ReviewsProdutosDbContext>(o => o.UseSqlServer(connectionString));
+
+            services.AddScoped<IProductRepository, ProductRepository>();
 
             services.AddAutoMapper(typeof(ProductProfile));
 
