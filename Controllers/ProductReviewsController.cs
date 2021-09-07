@@ -21,6 +21,12 @@ namespace ReviewProdutosEcommerce.API.Controllers
         }
 
         // GET api/products/1/productreviews/5
+        /// <summary>
+        /// Consulta de uma avaliação de um produto
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int productId, int id)
         {
@@ -34,7 +40,12 @@ namespace ReviewProdutosEcommerce.API.Controllers
 
             return Ok(productDetails);
         }
-
+        /// <summary>
+        /// Cadastro de uma avaliação de um produto
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> Post(int productId, AddProductReviewInputModel model)
         {
